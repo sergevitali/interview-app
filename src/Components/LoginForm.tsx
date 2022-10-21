@@ -48,6 +48,7 @@ const LoginForm: React.FC<{}> = () => {
             setMessage(null)
             setName(e.target.value)
           }}
+          aria-label="Firstname"
           value={firstname}
           style={{ marginBottom: '10px', padding: '10px', width: '100%' }}
           name="fname"
@@ -59,6 +60,7 @@ const LoginForm: React.FC<{}> = () => {
             setMessage(null)
             setPassword(e.target.value)
           }}
+          aria-label="Password"
           style={{ width: '100%', padding: '10px' }}
           name="passowrd"
           type="password"

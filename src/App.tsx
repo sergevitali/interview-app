@@ -1,6 +1,6 @@
 import Styles from './App.module.scss'
 import Button from '@mui/material/Button'
-import { SyntheticEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box } from '@mui/material'
 import {
   fetchData,
