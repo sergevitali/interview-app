@@ -3,8 +3,5 @@ import App from './App'
 
 test('renders App', () => {
   render(<App />)
-  const h1Element = screen.getByText('This is an app')
-  const buttonElement = screen.getByRole('button', { name: 'Hello World' })
-  expect(h1Element).toBeInTheDocument()
-  expect(buttonElement).toBeInTheDocument()
+  expect(screen.getByText('Hello World!')).toBeInTheDocument()
 })
