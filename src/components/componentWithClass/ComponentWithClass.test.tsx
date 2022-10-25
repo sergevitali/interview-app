@@ -12,7 +12,8 @@ const props: ComponentWithClassProps = {
 }
 
 const initialState: State = {
-  count: 0
+  count: 0,
+  anArray: []
 }
 
 describe('counter element', () => {

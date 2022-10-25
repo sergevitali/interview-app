@@ -10,6 +10,7 @@ export type ComponentWithClassProps = {
 
 export type State = {
   count: number
+  anArray: []
 }
 
 class ComponentWithClass extends React.Component<
@@ -19,13 +20,15 @@ class ComponentWithClass extends React.Component<
   constructor(props: ComponentWithClassProps) {
     super(props)
     this.state = {
-      count: 0
+      count: 0,
+      anArray: []
     }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick = (indx: number) => {
     if (indx === 0) {
-      this.setState((state) => ({ count: state.count + 1 }))
+      this.setState((state) => ({ ...state, count: state.count + 1 }))
     } else if (indx === 1) {
       this.setState((state) => ({ count: state.count - 1 }))
     } else this.setState({ count: 0 })
