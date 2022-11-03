@@ -1,0 +1,65 @@
+.FormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=1530&dpr=1');
+}
+
+.Form {
+  background-color: aliceblue;
+  padding: 20px 50px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.FormInput {
+  margin: 10px 0;
+  padding: 10px 5px;
+  border: 1px solid rgb(140, 139, 139);
+  border-radius: 4px;
+}
+
+.Label {
+  color: gray;
+  font-size: 12px;
+}
+
+.Title {
+  color: rgb(50, 38, 221);
+  text-align: center;
+  margin-top: 0;
+}
+
+.Button {
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  font-size: large;
+  background-color: rgb(217, 80, 230);
+  color: white;
+  margin: 20px 0 0;
+}
+
+.FormInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.FormInput:invalid ~ .Error {
+  display: block;
+}
+
+input:invalid:focus {
+  border: 1px solid red;
+}
