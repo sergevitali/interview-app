@@ -1,13 +1,20 @@
 import Styles from './App.module.scss'
-import Button from '@mui/material/Button'
+import styled from 'styled-components'
+import HomePage from './app/containers/HomePage'
 
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 function App() {
   return (
     <div className={Styles.App}>
-      <h1>This is an app</h1>
-      <Button variant="contained" className={Styles.button}>
-        Hello World
-      </Button>
+      <AppContainer>
+        <HomePage />
+      </AppContainer>
     </div>
   )
 }
