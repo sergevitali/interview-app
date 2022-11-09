@@ -1,13 +1,13 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { useField } from 'formik'
 
-type SelectFieldDemoProps = {
+type SelectFieldProps = {
   name: string
   label: string
   options: { value: string | number; name: string }[]
   fullWidth?: boolean
 }
-const SelectFieldDemo: React.FC<SelectFieldDemoProps> = (props) => {
+const SelectField: React.FC<SelectFieldProps> = (props) => {
   const [field, meta] = useField(props)
   const { name, label, options } = props
 
@@ -34,4 +34,4 @@ const SelectFieldDemo: React.FC<SelectFieldDemoProps> = (props) => {
   )
 }
 
-export default SelectFieldDemo
+export default SelectField

@@ -1,13 +1,13 @@
 import { TextField } from '@mui/material'
 import { useField } from 'formik'
 
-type TextFieldDemoProps = {
+type InputFieldProps = {
   name: string
   label: string
   type?: 'text' | 'number' | 'textarea'
   fullWidth?: boolean
 }
-const TextFieldDemo: React.FC<TextFieldDemoProps> = (props) => {
+const InputField: React.FC<InputFieldProps> = (props) => {
   const [field, meta] = useField(props)
   const { name, type } = props
 
@@ -29,4 +29,4 @@ const TextFieldDemo: React.FC<TextFieldDemoProps> = (props) => {
   )
 }
 
-export default TextFieldDemo
+export default InputField

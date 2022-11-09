@@ -1,14 +1,19 @@
-import { FormControl, FormGroup, FormLabel } from '@mui/material'
+import {
+  FormControl,
+  FormGroup,
+  FormHelperText,
+  FormLabel
+} from '@mui/material'
 import { useField } from 'formik'
-import CheckboxFieldDemo from './CheckboxFieldDemo'
+import CheckboxField from './CheckboxField'
 
-type MultiChecboxDemoProps = {
+type MultiChecboxProps = {
   name: string
   label: string
   options: Array<{ label: string; value: string }>
 }
 
-const MultiChecboxDemo: React.FC<MultiChecboxDemoProps> = (props) => {
+const MultiChecbox: React.FC<MultiChecboxProps> = (props) => {
   const [field, meta] = useField(props)
   const { name, label, options } = props
 
@@ -22,7 +27,7 @@ const MultiChecboxDemo: React.FC<MultiChecboxDemoProps> = (props) => {
       <FormLabel component="legend">{label}</FormLabel>
       <FormGroup sx={{ display: 'flex', flexDirection: 'row' }}>
         {options.map((opt, index) => (
-          <CheckboxFieldDemo
+          <CheckboxField
             key={index}
             name={name}
             label={opt.label}
@@ -30,8 +35,11 @@ const MultiChecboxDemo: React.FC<MultiChecboxDemoProps> = (props) => {
           />
         ))}
       </FormGroup>
+      {meta.touched && Boolean(meta.error) && (
+        <FormHelperText error>{meta.error}</FormHelperText>
+      )}
     </FormControl>
   )
 }
 
-export default MultiChecboxDemo
+export default MultiChecbox

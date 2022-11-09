@@ -1,20 +1,27 @@
-import { Checkbox, FormControl, FormControlLabel } from '@mui/material'
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText
+} from '@mui/material'
 import { useField } from 'formik'
 
-type CheckboxFieldDemoProps = {
+type CheckboxFieldProps = {
   name: string
   label: string
   value?: string
 }
-const CheckboxFieldDemo: React.FC<CheckboxFieldDemoProps> = (props) => {
+const CheckboxField: React.FC<CheckboxFieldProps> = (props) => {
   const [field, meta] = useField(props)
   const { label, value } = props
+  const isError = Boolean(meta.error) && meta.touched && !value
 
   return (
-    <FormControl required error={meta.touched && Boolean(meta.error)}>
+    <FormControl>
       <FormControlLabel
         control={
           <Checkbox
+            {...field}
             value={value}
             name={field.name}
             checked={field.checked}
@@ -23,8 +30,9 @@ const CheckboxFieldDemo: React.FC<CheckboxFieldDemoProps> = (props) => {
         }
         label={label}
       />
+      {isError && <FormHelperText error>{meta.error}</FormHelperText>}
     </FormControl>
   )
 }
 
-export default CheckboxFieldDemo
+export default CheckboxField

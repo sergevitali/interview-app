@@ -1,10 +1,13 @@
 import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import { Form, Formik, FormikProps } from 'formik'
-import CheckboxFieldDemo from './CheckboxFieldDemo'
+import { validation } from './FormDemoValidation'
 import { InvestmentDetails } from './InvestmentDetails.types'
-import MultiChecboxDemo from './MultiCheckboxDemo'
-import SelectFieldDemo from './SelectFieldDemo'
-import TextFieldDemo from './TextFieldDemo'
+import {
+  CheckboxField,
+  InputField,
+  SelectField,
+  MultiCheckbox
+} from './organisms/forms'
 
 const initialValues: InvestmentDetails = {
   fullName: '',
@@ -24,22 +27,27 @@ const FormDemo: React.FC<{}> = () => {
         </Typography>
         <Formik
           initialValues={initialValues}
+          validationSchema={validation}
           onSubmit={(values, actions) => {
-            console.log({ values, actions })
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(true)
+              }, 5000)
+            }).then(() => console.log(values))
           }}
         >
           {({
             values,
-            handleChange,
-            touched,
-            errors
+            errors,
+            isSubmitting,
+            isValidating
           }: FormikProps<InvestmentDetails>) => (
             <Form>
               <Box mb={3}>
-                <TextFieldDemo name="fullName" label="Full Name" fullWidth />
+                <InputField name="fullName" label="Full Name" fullWidth />
               </Box>
               <Box mb={2}>
-                <TextFieldDemo
+                <InputField
                   name="initialInvestment"
                   label="Initial Investment"
                   type="number"
@@ -47,18 +55,18 @@ const FormDemo: React.FC<{}> = () => {
                 />
               </Box>
               <Box mb={1}>
-                <MultiChecboxDemo
+                <MultiCheckbox
                   name="investmentRisk"
                   label="Investment Risk"
                   options={[
-                    { label: 'Low', value: 'low' },
+                    { label: 'Low - Safe', value: 'low' },
                     { label: 'Medium', value: 'medium' },
-                    { label: 'High', value: 'high' }
+                    { label: 'High - Super Risky', value: 'high' }
                   ]}
                 />
               </Box>
               <Box mb={3}>
-                <TextFieldDemo
+                <InputField
                   name="commentAboutInvestmentRisk"
                   label="Comment About Investment Risk"
                   type="textarea"
@@ -66,7 +74,7 @@ const FormDemo: React.FC<{}> = () => {
                 />
               </Box>
               <Box mb={2}>
-                <SelectFieldDemo
+                <SelectField
                   name="dependents"
                   label="Dependents"
                   options={[
@@ -79,12 +87,13 @@ const FormDemo: React.FC<{}> = () => {
                 />
               </Box>
               <Box mb={1}>
-                <CheckboxFieldDemo
+                <CheckboxField
                   name="acceptedTermsAndConditions"
                   label="Accepted Terms And Conditions"
                 />
               </Box>
               <Button
+                disabled={isSubmitting || isValidating}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -93,6 +102,7 @@ const FormDemo: React.FC<{}> = () => {
                 Submit
               </Button>
 
+              <pre>{JSON.stringify(errors, null, 4)}</pre>
               <pre>{JSON.stringify(values, null, 4)}</pre>
             </Form>
           )}
