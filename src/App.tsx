@@ -1,14 +1,21 @@
-import Styles from './App.module.scss'
-import Button from '@mui/material/Button'
+import FormDemo from './components/FormDemo'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
 
 function App() {
   return (
-    <div className={Styles.App}>
-      <h1>This is an app</h1>
-      <Button variant="contained" className={Styles.button}>
-        Hello World
-      </Button>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh'
+      }}
+    >
+      <Container>
+        <FormDemo />
+      </Container>
+    </Box>
   )
 }
 
